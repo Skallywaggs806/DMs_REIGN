@@ -14,9 +14,9 @@ def generate_npc(level=1):
     if level < 1:
         raise ValueError("Level must be at least 1.")
     
-    class_type = classes[roll_dice(1, len(classes), 0) - 1]
-    race = races[roll_dice(1, len(races), 0) - 1]
-    background = backgrounds[roll_dice(1, len(backgrounds), 0) - 1] 
+    class_type = classes[roll_dice("1d12") - 1]
+    race = races[roll_dice("1d9") - 1]
+    background = backgrounds[roll_dice("1d12") - 1] 
 
     npc_name = requests.get(f"https://fantasyname.lukewh.com/?family=t").text
     npc = {
@@ -55,9 +55,9 @@ def generate_npc(level=1):
     class_dict = requests.get(f"https://www.dnd5eapi.co/api/2014/classes/{class_type.lower()}").json()
     hit_dice = class_dict["hit_die"]
     
-
+    con_modifier = modifiers["Constitution"]
     npc["Hit Die"] = hit_dice
-    hit_points = roll_dice(level, hit_dice, modifiers["Constitution"])
+    hit_points = roll_dice(f"{level}d{hit_dice}+{con_modifier * level}")
     combat_stats["Hit Points"] = hit_points
 
     proficiencies = class_dict.get("proficiencies", [])

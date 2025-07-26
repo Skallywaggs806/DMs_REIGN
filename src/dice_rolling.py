@@ -2,7 +2,7 @@
 import random
 
 
-def roll_dice(num_dice, num_sides, modifier, purpose=""):
+def roll_dice(dice_roll, purpose=None):
     """
     Rolls a specified number of dice with a given number of sides and applies a modifier.
 
@@ -11,6 +11,8 @@ def roll_dice(num_dice, num_sides, modifier, purpose=""):
     :param modifier: Modifier to apply to the total roll
     :return: Total result after rolling the dice and applying the modifier
     """
+
+    num_dice, num_sides, modifier = parse_dice_roll(dice_roll)
     if num_dice < 0:
         raise ValueError("Number of dice cannot be negative.")
     if num_sides <= 0:
@@ -43,3 +45,28 @@ def roll_dice_stats():
         
     
     return stats
+
+
+def parse_dice_roll(dice_string):
+    # Initialize variables
+    num_dice = 0
+    sides = 0
+    modifier = 0
+    
+    # Split on 'd' to separate number of dice and the rest
+    parts = dice_string.split('d')
+    num_dice = int(parts[0])  # First part is number of dice
+    
+    # Check for modifier in the second part
+    if '+' in parts[1]:
+        dice_and_modifier = parts[1].split('+')
+        sides = int(dice_and_modifier[0])  # Part before '+' is sides
+        modifier = int(dice_and_modifier[1])  # Part after '+' is modifier
+    elif '-' in parts[1]:
+        dice_and_modifier = parts[1].split('-')
+        sides = int(dice_and_modifier[0])  # Part before '-' is sides
+        modifier = -int(dice_and_modifier[1])  # Part after '-' is negative modifier
+    else:
+        sides = int(parts[1])  # No modifier, just sides
+    
+    return num_dice, sides, modifier

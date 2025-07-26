@@ -29,15 +29,13 @@ while True:
                 level = 1
         generate_npc(level)
     elif choice == '2':
-        num_dice = int(input("Enter number of dice to roll: "))
-        num_sides = int(input("Enter number of sides on each die: "))
-        modifier = int(input("Enter modifier to apply: "))
+        dice_roll = input("Enter dice roll in format 'XdY+Z' (e.g., '2d6+3'): ")
         purpose = input("Enter purpose of the roll (e.g., attack, skill check): ")
-        print(f"Rolling {num_dice}d{num_sides} with modifier {modifier} for {purpose}...")
+        print(f"Rolling {dice_roll} for {purpose}...")
         try:
-            result = roll_dice(num_dice, num_sides, modifier, purpose)
-            print(f"Result of rolling {num_dice}d{num_sides} with modifier {modifier} for {purpose}: {result}")
-            save_to_file(f"Result of rolling {num_dice}d{num_sides} with modifier {modifier} for {purpose}: {result}", "DM_Data/roll_results_logs.txt")
+            result = roll_dice(dice_roll, purpose)
+            print(f"Result of rolling {dice_roll} for {purpose}: {result}")
+            save_to_file(f"Result of rolling {dice_roll} for {purpose}: {result}", "DM_Data/roll_results_logs.txt")
         except ValueError as e:
             print(f"Error: {e}")
     elif choice == '3':
