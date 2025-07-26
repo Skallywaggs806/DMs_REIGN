@@ -16,3 +16,19 @@ def save_to_file(data, filename):
     with open(filename, 'a') as file:
         file.write(data)
         file.write('\n')
+
+def read_from_file(filename):
+    """
+    Reads data from a file with the specified filename.
+    
+    Parameters:
+    filename (str): The name of the file to read data from.
+    
+    Returns:
+    str: The content of the file.
+    """
+    if not os.path.exists(filename):
+        return ""
+
+    with open(filename, 'r') as file:
+        return file.read()

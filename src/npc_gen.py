@@ -1,9 +1,10 @@
 import random
 import requests
 
-from src.save_to_file import save_to_file
+from src.save_to_file import save_to_file, read_from_file
 from src.dice_rolling import roll_dice_stats, roll_dice
 from src.dnd_data import *
+from src.racial_modifiers import check_racial_modifiers
 
 def generate_npc(level=1):
     """
@@ -59,17 +60,27 @@ def generate_npc(level=1):
     hit_points = roll_dice(level, hit_dice, modifiers["Constitution"])
     combat_stats["Hit Points"] = hit_points
 
+    proficiencies = class_dict.get("proficiencies", [])
+
+    check_racial_modifiers(npc, stats)
+    
 
 
     for key, value in npc.items():
-        save_to_file(f"{key}: {value}", f"DM_Data/{npc_name}_npc_data.txt")
-    save_to_file("\n\n", f"DM_Data/{npc_name}_npc_data.txt") 
+        save_to_file(f"{key}: {value}", f"DM_Data/NPCs/{npc_name}_npc_data.txt")
+    save_to_file("\n\n", f"DM_Data/NPCs/{npc_name}_npc_data.txt") 
     for key, value in combat_stats.items():
-        save_to_file(f"{key}: {value}", f"DM_Data/{npc_name}_npc_data.txt")
-    save_to_file("\n\n", f"DM_Data/{npc_name}_npc_data.txt") 
+        save_to_file(f"{key}: {value}", f"DM_Data/NPCs/{npc_name}_npc_data.txt")
+    save_to_file("\n\n", f"DM_Data/NPCs/{npc_name}_npc_data.txt") 
     for stat, value in stats.items():
-        save_to_file(f"{stat}: {value}", f"DM_Data/{npc_name}_npc_data.txt")
-    save_to_file("\n\n", f"DM_Data/{npc_name}_npc_data.txt") 
+        save_to_file(f"{stat}: {value}", f"DM_Data/NPCs/{npc_name}_npc_data.txt")
+    save_to_file("\n\n", f"DM_Data/NPCs/{npc_name}_npc_data.txt") 
     for mod, value in modifiers.items():
-        save_to_file(f"{mod} Modifier: {value}", f"DM_Data/{npc_name}_npc_data.txt")
-    print(f"NPC {npc_name} generated and saved to DM_Data/{npc_name}_npc_data.txt")
+        save_to_file(f"{mod} Modifier: {value}", f"DM_Data/NPCs/{npc_name}_npc_data.txt")
+    save_to_file("\n\n", f"DM_Data/NPCs/{npc_name}_npc_data.txt")
+    for proficiency in proficiencies:
+        save_to_file(f"Proficiency: {proficiency['name']}", f"DM_Data/NPCs/{npc_name}_npc_data.txt")
+    print(f"NPC {npc_name} generated and saved to DM_Data/NPCs/{npc_name}_npc_data.txt")
+    print(read_from_file(f"DM_Data/NPCs/{npc_name}_npc_data.txt"))
+    print("\nNPC generated successfully!\n")
+
