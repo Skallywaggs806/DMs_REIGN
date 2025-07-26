@@ -5,6 +5,7 @@ from src.dice_rolling import roll_dice, roll_dice_stats
 from src.npc_gen import generate_npc
 from src.dnd_data import *
 from src.encounter_generator import generate_encounter
+from src.log_magic_items import log_magic_items
 
 print("Hello! I am your DM assistant.")
 
@@ -13,8 +14,8 @@ while True:
     print("1. Generate a new NPC")
     print("2. Roll Dice")
     print("3. Generate Encounter")
-    
-    print("4. Exit")
+    print("4. Log Magic Items")
+    print("5. Exit")
     
     choice = input("Please select an option: ")
     
@@ -44,6 +45,11 @@ while True:
         encounter_name = input("Enter name for the encounter: ")
         generate_encounter(num_enemies, apl, encounter_name)
     elif choice == '4':
+        player = input("Enter player's name: ")
+        item_name = input("Enter magic item name: ")
+        item_description = input("Enter magic item description: ")
+        log_magic_items(player, item_name, item_description)
+    elif choice == '5':
         print("Goodbye!")
         break
     else:
