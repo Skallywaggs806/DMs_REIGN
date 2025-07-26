@@ -72,4 +72,4 @@ def generate_npc(level=1):
     save_to_file("\n\n", f"DM_Data/{npc_name}_npc_data.txt") 
     for mod, value in modifiers.items():
         save_to_file(f"{mod} Modifier: {value}", f"DM_Data/{npc_name}_npc_data.txt")
-
+    print(f"NPC {npc_name} generated and saved to DM_Data/{npc_name}_npc_data.txt")

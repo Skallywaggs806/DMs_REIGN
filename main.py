@@ -5,10 +5,10 @@ from src.dice_rolling import roll_dice, roll_dice_stats
 from src.npc_gen import generate_npc
 from src.dnd_data import *
 
-print("Welcome to the NPC Generator!")
+print("Hello! I am your DM assistant.")
 
 while True:
-    print("Welcome to the NPC Generator!")
+    print("Please choose an option:")
     print("1. Generate a new NPC")
     print("2. Roll Dice")
     print("3. Exit")
@@ -38,7 +38,7 @@ while True:
         except ValueError as e:
             print(f"Error: {e}")
     elif choice == '3':
-        print("Exiting the NPC Generator. Goodbye!")
+        print("Goodbye!")
         break
     else:
         print("Invalid option, please try again.")
