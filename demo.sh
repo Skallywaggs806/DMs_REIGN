@@ -1,1 +1,1 @@
-python3 demo.sh
+python3 demo.py
