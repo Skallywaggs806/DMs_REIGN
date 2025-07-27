@@ -4,6 +4,10 @@ from src.save_to_file import save_to_file, read_from_file
 from src.dice_rolling import roll_dice_stats, roll_dice
 
 def generate_encounter(num_enemies=1, apl=1, encounter_name="Random Encounter"):
+    save_to_file(f"Encounter Name: {encounter_name}", f"DM_Data/Encounters/{encounter_name}.txt")
+    save_to_file(f"Average Party Level (APL): {apl}", f"DM_Data/Encounters/{encounter_name}.txt")
+    save_to_file(f"Number of Enemies: {num_enemies}", f"DM_Data/Encounters/{encounter_name}.txt")
+    save_to_file("===============================", f"DM_Data/Encounters/{encounter_name}.txt")
 
     for i in range (num_enemies):
         monster = monsters[roll_dice("1d8") - 1]
@@ -17,7 +21,8 @@ def generate_encounter(num_enemies=1, apl=1, encounter_name="Random Encounter"):
                     save_to_file("\n", f"DM_Data/Encounters/{encounter_name}.txt")
             else:
                 save_to_file(f"{key}: {value}", f"DM_Data/Encounters/{encounter_name}.txt")
-        save_to_file("\n", f"DM_Data/Encounters/{encounter_name}.txt")
+        save_to_file("===============================", f"DM_Data/Encounters/{encounter_name}.txt")
+      
     print(f"Encounter '{encounter_name}' generated with {num_enemies} enemies.")
     print("\nEncounter details:\n")
     print(read_from_file(f"DM_Data/Encounters/{encounter_name}.txt"))

@@ -120,3 +120,26 @@ monsters = [
     }
 ]#1d8
 
+coinage_table = {
+    "low_level": {
+        "01-30": {"copper": "2d10", "silver": "1d8"},
+        "31-60": {"silver": "3d12", "gold": "1d6"},
+        "61-85": {"gold": "2d8", "silver": "1d4"},
+        "86-95": {"gold": "1d10", "silver": "1d6"},
+        "96-100": {"platinum": "1d4", "gold": "2d10"}
+    },
+    "mid_level": {
+        "01-30": {"silver": "2d20", "gold": "1d10"},
+        "31-60": {"gold": "3d20", "silver": "1d10"},
+        "61-85": {"gold": "4d20", "platinum": "1d6"},
+        "86-95": {"platinum": "2d10", "gold": "2d20"},
+        "96-100": {"platinum": "3d10", "gold": "3d20"}
+    },
+    "high_level": {
+        "01-30": {"gold": "2d20", "platinum": "1d8"},
+        "31-60": {"platinum": "3d20", "gold": "2d10"},
+        "61-85": {"platinum": "5d20", "gold": "2d20"},
+        "86-95": {"platinum": "6d20", "gold": "3d20"},
+        "96-100": {"platinum": "8d20", "gold": "4d20"}
+    }
+}

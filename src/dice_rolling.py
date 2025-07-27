@@ -19,6 +19,7 @@ def roll_dice(dice_roll, purpose=None):
         raise ValueError("Number of sides must be a positive integer.")
     rolls = [random.randint(1, num_sides) for _ in range(num_dice)]
     total = sum(rolls) + modifier
+
     return total
 
 def roll_dice_stats():

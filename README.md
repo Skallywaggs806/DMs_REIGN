@@ -1,6 +1,5 @@
-# dm_helper
-
-#TO DO
+#Dungeon Master's R.E.I.G.N
 
 
-- create player_character sheet
+
+
