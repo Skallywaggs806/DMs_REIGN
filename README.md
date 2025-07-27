@@ -20,7 +20,7 @@
 
 ---
 
-### 🎬 Insert Epic GIF Here! 🎬
+### 🎬 View it in Action!!! 🎬
 ![demo gif](demo.gif)
 
 ---
