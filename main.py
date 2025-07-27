@@ -8,7 +8,7 @@ from src.encounter_generator import generate_encounter
 from src.log_magic_items import log_magic_items
 from src.generate_gold import generate_gold
 
-print("Hello! I am your DM assistant.")
+print("Hello! Welcome to Dungeon Masters R.E.I.G.N.!")
 
 while True:
     print("Please choose an option:")

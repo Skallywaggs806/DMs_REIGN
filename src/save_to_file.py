@@ -33,15 +33,3 @@ def read_from_file(filename):
     with open(filename, 'r') as file:
         return file.read()
 
-def get_players():
-    """
-    Retrieves the list of players from the players.json file.
-    
-    Returns:
-    dict: A dictionary containing player names and their inventories.
-    """
-    if not os.path.exists("DM_Data/players.json"):
-        return {}
-
-    with open("DM_Data/players.json", "r") as file:
-        return json.load(file)

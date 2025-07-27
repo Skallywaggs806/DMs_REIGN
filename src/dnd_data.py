@@ -62,7 +62,7 @@ monsters = [
         ]
     },
     {
-        "name": "Orc",
+        "name": "Bandit",
         "hit_dice": "2d8+6",
         "armor_class": 13,
         "description": "A brutish, aggressive humanoid with a love for battle and chaos.",
